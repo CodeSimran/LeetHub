@@ -1,17 +1,19 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int i = 0,j = numbers.length-1;
+        int left = 0;
+        int right = numbers.length - 1;
 
-        while(i<=j){
-            int sum = numbers[i] + numbers[j];
+        while (left < right) {
+            int total = numbers[left] + numbers[right];
 
-            if(sum<target) i++;
-            else if(sum>target) j--;
-            else{
-                return new int[]{i+1,j+1};
+            if (total == target) {
+                return new int[]{left + 1, right + 1};
+            } else if (total > target) {
+                right--;
+            } else {
+                left++;
             }
         }
-
-        return new int[]{0,0};
+        return new int[]{-1, -1}; // If no solution is found        
     }
 }
